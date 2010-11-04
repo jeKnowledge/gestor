@@ -1,4 +1,4 @@
-html, body {
+html {
 	margin: 0px;
 	padding: 0px;
 	background: url('../images/splash/bg.png') repeat-x 100%;
@@ -12,8 +12,9 @@ a, a:visited, a:hover {
 body {
 	font-family: verdana, sans-serif;
 	color: #FFF;
-	background-color: white;
 	text-align: center;
+	margin: 0px;
+	padding: 0px;
 }
 
 div#title {
