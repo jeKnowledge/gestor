@@ -33,6 +33,9 @@ class UserProfile(models.Model):
 	def get_absolute_url(self):
 		return "/users/%s/" % self.user.username
 		
+	def get_public_url(self):
+		return "%s/%s/" % (settings.BASE_DOMAIN, self.user.username)
+		
 	def photo_is_default(self):
 		return self.photo == settings.DEFAULT_AVATAR
 	

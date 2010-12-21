@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 from cvmanager.utils import COURSES_CHOICES
 import datetime
@@ -33,7 +34,7 @@ class CurriculumVitae(models.Model):
 		return "/users/%s/curriculum" % self.owner.username
 		
 	def get_public_url(self):
-		return "/%s/" % self.owner.username
+		return "%s/%s/" % (settings.BASE_DOMAIN, self.owner.username)
 	
 	def check_user(self, user):
 		if not user.has_perm('cvmanager.can_view_cv') or not user is self.owner:

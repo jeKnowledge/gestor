@@ -34,7 +34,8 @@ TIME_ZONE = 'Europe/Lisbon'
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
-BASE_DOMAIN = "http://jeknowledge.pt"
+if DEBUG: BASE_DOMAIN = ""
+else:     BASE_DOMAIN = "http://jeknowledge.pt"
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.

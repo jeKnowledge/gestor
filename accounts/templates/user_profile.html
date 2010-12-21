@@ -66,11 +66,11 @@
 				{% if perms.cvmanager.can_view_cv_details or request.user|equals:u %}
 				<a href="{{u.get_absolute_url}}curriculum/">View {{u.get_full_name}}'s full CV</a>
    				{% else %}
-				<a href="/{{ u.username }}/">View {{u.get_full_name}}'s public CV</a>
+				<a href="{{ profile.get_public_url }}">View {{u.get_full_name}}'s public CV</a>
 				{% endif %}
 				
 				{% ifequal request.user u %}
-					<br /><a href="/{{ u.username }}/">Use this URL to share your public CV</a>
+					<br /><a href="{{ profile.get_public_url }}">Use this URL to share your public CV</a>
 				{% endifequal %}
 			{% endifequal %}
 		{% else %}
