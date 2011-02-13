@@ -9,6 +9,9 @@ class UserProfile(models.Model):
 	user = models.ForeignKey(User, unique=True)
 	
 	im = models.CharField("IM", max_length=40, blank=True, null=True)
+	twitter = models.CharField("Twitter", max_length=40, blank=True, null=True)
+	facebook = models.URLField("Facebook Profile", blank=True, null=True)
+	homepage = models.URLField("Homepage", blank=True, null=True)
 	
 	organization = models.CharField("Organization", max_length=20, default='jeKnowledge', null=True)
 	title = models.CharField("Position", max_length=40, blank=True, null=True)

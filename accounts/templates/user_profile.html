@@ -33,6 +33,9 @@
 			
 			{% if perms.cvmanager.can_view_cv_details or request.user|equals:u %}
 			{% if profile.im %}<p><b class="label">IM:</b> {{profile.im}}</p>{% endif %}
+			{% if profile.twitter %}<p><b class="label">Twitter:</b> <a href="http://twitter.com/{{profile.twitter}}">@{{profile.twitter}}</a></p>{% endif %}
+			{% if profile.facebook %}<p><b class="label">Facebook Profile:</b> {{profile.facebook|urlize}}</p>{% endif %}
+			{% if profile.homepage %}<p><b class="label">Homepage:</b> {{profile.homepage|urlize}}</p>{% endif %}
 			
 			<p><b class="label">Last Visit:</b> {{u.last_login|naturalday}}</p>
 			<p><b class="label">User Since:</b> {{u.date_joined|naturalday}}</p>

@@ -234,3 +234,12 @@ input.submit-image {
 	
 	vertical-align: text-top;
 }
+
+.share-article {
+	float: left;
+	line-height: 0px;
+}
+
+.share-article iframe {
+	vertical-align: top;
+}

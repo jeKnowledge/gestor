@@ -1,5 +1,7 @@
 ﻿from django.template import Library
 from mainsite.models import News
+from accounts.models import UserProfile
+from cvmanager.models import CurriculumVitae
 from mainsite.utils import translate
 
 register = Library()
@@ -37,3 +39,28 @@ def load_archive(number = 0):
 @register.filter
 def trans_month(string):
 	return " ".join( map( translate, string.split() ) )
+	
+@register.simple_tag
+def author_link(author):
+	url = None
+	
+	# Fetch auxiliar Models
+	
+	try: profile = author.get_profile()
+	except UserProfile.DoesNotExist: profile = None
+	
+	if author.curriculumvitae_set.count(): cv = CurriculumVitae.objects.get(owner=author)
+	else: cv = None
+	
+	# Build the url
+	
+	if profile:
+		url = ((profile.homepage if profile else None) or (cv.homepage if cv else None)) or (('http://twitter.com/'+profile.twitter) if profile.twitter else None) or profile.facebook
+	
+	elif cv and not profile:
+		url = cv.homepage
+	
+	# Build the html
+	
+	if url: return '<a href="%s">%s</a>' % (url, author.get_full_name())
+	else:   return author.get_full_name()

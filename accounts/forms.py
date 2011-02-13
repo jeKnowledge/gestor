@@ -14,6 +14,11 @@ class UserProfileForm(ModelForm):
 	user = ModelChoiceField(queryset=User.objects.all(),widget=HiddenInput())
 	photo = LimitedImageField(widget=ImageWidget(UserProfile), required=False)
 	
+	#fieldsets = [
+	#        ('Social Info', {'fields': ['im', 'twitter', 'facebook', 'homepage']}),
+	#        ('Carrer Info', {'fields': ['organization', 'title', 'description']}),
+	#    ]
+	
 	class Meta:
 		model = UserProfile
 	
