@@ -12,7 +12,7 @@ except: pass
 class ActionItemAdmin(admin.ModelAdmin):	
 	list_display = ('title','project','done','due_date','priority')
 	list_filter = ('project','done','targets','priority')
-	search_fields = ['title','description','project']
+	search_fields = ['title','description','project__name']
 	ordering = ('-due_date',)
 
 
@@ -22,7 +22,7 @@ except: pass
 class NoteAdmin(admin.ModelAdmin):	
 	list_display = ('title','project','author',)
 	list_filter = ('project','author',)
-	search_fields = ['title','description','project']
+	search_fields = ['title','description','project__name']
 
 
 try: admin.site.register(Note,NoteAdmin)
@@ -31,7 +31,7 @@ except: pass
 class ActionNoteAdmin(admin.ModelAdmin):	
 	list_display = ('actionitem','author',)
 	list_filter = ('actionitem','author',)
-	search_fields = ['description','actionitem']
+	search_fields = ['description','actionitem__title']
 
 
 try: admin.site.register(ActionNote,ActionNoteAdmin)
